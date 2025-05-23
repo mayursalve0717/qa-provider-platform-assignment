@@ -1,0 +1,129 @@
+Test Case ID,Test Case Name,Description,Steps,Expected Result,Priority
+,,,,,
+1. Login Interface - Username Field,,,,,
+Test Case ID,Test Case Name,Description,Steps,Expected Result,Priority
+TC-LOGIN-01,Valid Username,Verify login with valid username.,"1. Enter valid username.
+2. Enter valid password.
+3. Click ""Login.""",Redirect to dashboard.,High
+TC-LOGIN-02,Empty Username,Prevent login with empty username.,"1. Leave username blank.
+2. Enter valid password.
+3. Click ""Login.""","Error: ""Username is required.""",High
+TC-LOGIN-03,SQL Injection in Username,Block SQL injection in username.,"1. Enter `' OR 1=1 --` in username.
+2. Enter any password.
+3. Click ""Login.""","Error: ""Invalid credentials.""",High
+TC-LOGIN-04,Username Length (100+ chars),Validate username with 100+ characters.,"1. Enter 100+ character username.
+2. Enter valid password.
+3. Click ""Login.""","Error: ""Username exceeds maximum length.""",Medium
+,,,,,
+1. Login Interface - Password Field,,,,,
+TC-LOGIN-05,Valid Password,Verify login with valid password.,"1. Enter valid username.
+2. Enter valid password.
+3. Click ""Login.""",Redirect to dashboard.,High
+TC-LOGIN-06,Empty Password,Prevent login with empty password.,"1. Enter valid username.
+2. Leave password blank.
+3. Click ""Login.""","Error: ""Password is required.""",High
+TC-LOGIN-07,Incorrect Password,Block login with incorrect password.,"1. Enter valid username.
+2. Enter wrong password.
+3. Click ""Login.""","Error: ""Invalid credentials.""",High
+TC-LOGIN-08,Password Masking,Ensure password is masked.,"1. Type ""Password123"" into password field.",Display: `•••••••••`,Medium
+,,,,,
+,,,,,
+TC-PATIENT-01,Valid MRN,"Submit with valid, unique MRN.","1. Enter unique numeric MRN (e.g., 1003).",Patient added to dashboard.,High
+,,,2. Fill other fields.,,
+,,,"3. Click ""Submit.""",,
+TC-PATIENT-02,Duplicate MRN,Block duplicate MRN.,"1. Enter existing MRN (e.g., 1001).","Error: ""MRN must be unique.""",High
+,,,2. Fill other fields.,,
+,,,"3. Click ""Submit.""",,
+TC-PATIENT-03,Non-Numeric MRN,Reject non-numeric MRN.,1. Enter MRN-ABC.,"Error: ""MRN must be numeric.""",High
+,,,2. Fill other fields.,,
+,,,"3. Click ""Submit.""",,
+TC-PATIENT-04,Empty MRN,Prevent submission with empty MRN.,1. Leave MRN blank.,"Error: ""MRN is required.""",High
+,,,2. Fill other fields.,,
+,,,"3. Click ""Submit.""",,
+First Name,,,,,
+TC-PATIENT-05,Valid First Name,Submit with alphabetic first name.,"1. Enter ""Emily"".",Patient added.,High
+,,,2. Fill other fields.,,
+,,,"3. Click ""Submit.""",,
+TC-PATIENT-06,Empty First Name,Block empty first name.,1. Leave first name blank.,"Error: ""First Name is required.""",High
+,,,2. Fill other fields.,,
+,,,"3. Click ""Submit.""",,
+TC-PATIENT-07,Numeric First Name,Reject numbers in first name.,"1. Enter ""Emily123"".","Error: ""First Name must contain only letters.""",Medium
+,,,2. Fill other fields.,,
+,,,"3. Click ""Submit.""",,
+TC-PATIENT-08,First Name Length (50+ chars),Validate 50+ character first name.,1. Enter 50+ characters.,"Error: ""First Name exceeds maximum length.""",Medium
+,,,2. Fill other fields.,,
+,,,"3. Click ""Submit.""",,
+Last Name,,,,,
+TC-PATIENT-09,Valid Last Name,Submit with alphabetic last name.,"1. Enter ""Johnson"".",Patient added.,High
+,,,2. Fill other fields.,,
+,,,"3. Click ""Submit.""",,
+TC-PATIENT-10,Empty Last Name,Block empty last name.,1. Leave last name blank.,"Error: ""Last Name is required.""",High
+,,,2. Fill other fields.,,
+,,,"3. Click ""Submit.""",,
+TC-PATIENT-11,Special Characters in Last Name,Reject special characters.,"1. Enter ""Johnson@#"".","Error: ""Last Name must contain only letters.""",Medium
+,,,2. Fill other fields.,,
+,,,"3. Click ""Submit.""",,
+TC-PATIENT-12,Last Name Length (50+ chars),Validate 50+ character last name.,1. Enter 50+ characters.,"Error: ""Last Name exceeds maximum length.""",Medium
+,,,2. Fill other fields.,,
+,,,"3. Click ""Submit.""",,
+Date of Birth,,,,,
+TC-PATIENT-13,Valid Date of Birth,Submit valid past date.,1. Enter 1990-01-01.,Patient added.,High
+,,,2. Fill other fields.,,
+,,,"3. Click ""Submit.""",,
+TC-PATIENT-14,Future Date of Birth,Block future date.,1. Enter 2030-01-01.,"Error: ""Date of Birth cannot be in the future.""",High
+,,,2. Fill other fields.,,
+,,,"3. Click ""Submit.""",,
+TC-PATIENT-15,Invalid Date Format,"Reject incorrect format (e.g., 01-01-1990).",1. Enter 01-01-1990.,"Error: ""Use YYYY-MM-DD format.""",High
+,,,2. Fill other fields.,,
+,,,"3. Click ""Submit.""",,
+TC-PATIENT-16,Empty Date of Birth,Prevent empty date.,1. Leave date blank.,"Error: ""Date of Birth is required.""",High
+,,,2. Fill other fields.,,
+,,,"3. Click ""Submit.""",,
+Discharge Date & Time,,,,,
+TC-PATIENT-17,Valid Discharge DateTime,Submit valid date-time.,1. Enter 2024-05-20 14:30.,Patient added.,High
+,,,2. Fill other fields.,,
+,,,"3. Click ""Submit.""",,
+TC-PATIENT-18,Invalid DateTime Format,"Reject incorrect format (e.g., 20-05-2024).",1. Enter 20-05-2024.,"Error: ""Use YYYY-MM-DD HH:mm format.""",High
+,,,2. Fill other fields.,,
+,,,"3. Click ""Submit.""",,
+TC-PATIENT-19,Discharge Before Admission,Block discharge date before admission.,1. Enter discharge date earlier than admission.,"Error: ""Discharge date must be after admission.""",High
+,,,"2. Click ""Submit.""",,
+TC-PATIENT-20,Empty Discharge DateTime,Allow empty discharge date (if optional).,1. Leave discharge date blank.,Patient added (if optional).,Medium
+,,,2. Fill other fields.,,
+,,,"3. Click ""Submit.""",,
+Phone Number,,,,,
+TC-PATIENT-21,Valid Phone Number,Submit valid format (123-456-7890).,1. Enter 123-456-7890.,Patient added.,High
+,,,2. Fill other fields.,,
+,,,"3. Click ""Submit.""",,
+TC-PATIENT-22,Invalid Format (No hyphens),Reject 1234567890.,1. Enter 1234567890.,"Error: ""Use ###-###-#### format.""",High
+,,,2. Fill other fields.,,
+,,,"3. Click ""Submit.""",,
+TC-PATIENT-23,Short Phone Number,Block <10 digits.,1. Enter 123-456-789.,"Error: ""Phone number must be 10 digits.""",Medium
+,,,2. Fill other fields.,,
+,,,"3. Click ""Submit.""",,
+TC-PATIENT-24,Non-Numeric Phone Number,Reject letters/symbols.,1. Enter 123-ABC-7890.,"Error: ""Phone number must be numeric.""",Medium
+,,,2. Fill other fields.,,
+,,,"3. Click ""Submit.""",,
+Language (Dropdown),,,,,
+TC-PATIENT-25,Valid Language Selection,Submit with selected language.,"1. Choose ""Spanish"" from dropdown.","Patient added with ""Spanish"" language.",Medium
+,,,2. Fill other fields.,,
+,,,"3. Click ""Submit.""",,
+TC-PATIENT-26,Empty Language Field,Prevent empty language.,1. Leave language blank.,"Error: ""Language is required.""",Medium
+,,,2. Fill other fields.,,
+,,,"3. Click ""Submit.""",,
+TC-PATIENT-27,Invalid Language Option,Block non-listed language (if editable).,"1. Enter ""French"" (if field is editable).","Error: ""Select a valid language.""",Medium
+,,,"2. Click ""Submit.""",,
+Timezone (Dropdown),,,,,
+TC-PATIENT-28,Valid Timezone Selection,Submit with selected timezone.,"1. Choose ""PST (UTC-8)"".","Patient added with ""PST"" timezone.",Medium
+,,,2. Fill other fields.,,
+,,,"3. Click ""Submit.""",,
+TC-PATIENT-29,Empty Timezone Field,Prevent empty timezone.,1. Leave timezone blank.,"Error: ""Timezone is required.""",Medium
+,,,2. Fill other fields.,,
+,,,"3. Click ""Submit.""",,
+,,,,,
+TC-LOGIN-01,Valid Username,Verify login with valid username.,1. Enter valid username.,Redirect to dashboard.,High
+,,,2. Enter valid password.,,
+,,,"3. Click ""Login.""",,
+TC-LOGIN-02,Empty Username,Prevent login with empty username.,1. Leave username blank.,"Error: ""Username is required.""",High
+,,,2. Enter valid password.,,
+,,,"3. Click ""Login.""",,
